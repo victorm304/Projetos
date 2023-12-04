@@ -25,7 +25,7 @@ with open('apache.logs.txt', 'r') as arquivo:
             dicionario[contagem_ip].append(tamanho_objeto)
 
 # Imprime as primeiras 5 entradas do dicionário
-for chave, valores in list(dicionario.items())[:100]:
+for chave, valores in list(dicionario.items())[:5]:
     print 
     print(f'Endereço IP: {chave}, Tamanhos do objeto: {valores}')
 
