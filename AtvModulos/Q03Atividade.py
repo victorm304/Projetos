@@ -32,4 +32,3 @@ for chave, valores in list(dicionario.items())[:5]:
 # Imprime o número de endereços IP encontrados
 numero_enderecos_ip = len(dicionario)
 print(f'Número de endereços IP únicos: {numero_enderecos_ip}')
-
