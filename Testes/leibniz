@@ -1,6 +1,3 @@
-
-
-
 def leibniz(n):
     soma = 0
     for i in range(n):
