@@ -7,7 +7,7 @@ def leibniz(n):
         termo = (-1) ** i / (2 * i + 1)
         soma += termo
 
-    return soma * 5
+    return soma * 4
 
 termos = int(input("Digite o número de termos: "))
 
