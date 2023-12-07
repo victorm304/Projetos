@@ -1,5 +1,23 @@
-lista = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+#lista = list(range(0,1000 + 1))
 
-for item in lista:
-    
+#palavra = 'Palavra'
+#for item in lista:
+    #print (item)
+
+
+
+# range(valor_inicial, valor_final, incremento) 
+
+#for x in range(20,0,-2):
+    #print(x)
+
+pedras_preciosas = ['Rubi','Esmeralda','Safira','Quartzo','Safira','Diamante','Turmalina']
+
+for pedra in pedras_preciosas:
+    if pedra == 'Quartzo':
+        continue
+    print(pedra)
+                    
+
+
 
