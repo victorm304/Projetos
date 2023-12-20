@@ -14,3 +14,4 @@ if __name__ == '__main__':
     
     URL = httpx.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&lang={lang}&appid={api_key}')
     result = URL.json()
+    print(result)
