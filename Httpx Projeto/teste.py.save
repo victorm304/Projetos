@@ -14,6 +14,4 @@ if __name__ == '__main__':
     
     URL = httpx.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&lang={lang}&appid={api_key}')
     result = URL.json()
-    temperatura = converter_para_celsius(301.27)
-    print(result)
-    print(f'Temperatura: {int(temperatura)}°C')
+    print(f'{result}')
