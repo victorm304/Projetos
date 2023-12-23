@@ -42,15 +42,6 @@ if __name__ == '__main__':
     cidade = result['name']
     print(f'\nResultados para {cidade}, {pais}:\n')
     
-    # Obter o tempo(nublado, ceu aberto, etc.)
-    weather = result.get('weather', {})
-    if weather:
-        primeiro_tempo = weather[0]
-        tempo = primeiro_tempo.get('description')
-        print(f'Tempo: {tempo.title()}')
-    else:
-        print('Informações sobre o tempo não disponíveis')
-
     # Obter a temperatura, umidade, pressão atmosferica e visibilidade
     main = result.get('main', {})
     temperatura = converter_para_celsius(main['temp'])
@@ -93,6 +84,37 @@ if __name__ == '__main__':
     deslocamento_tempo = timedelta(seconds=deslocamento)
     fuso_horario_utc = horario_atual_utc + deslocamento_tempo
     fuso_horario = fuso_horario_utc.strftime('%A %H:%M')
-    print(f"Fuso Horário Atual: {fuso_horario.title()} ")
+    fuso_horario_formato_data = fuso_horario_utc.strftime('%d/%m/%Y %H:%M') 
 
+    # Imprimir os resultados
+    # Localização
+    print(f'\n{fuso_horario.title()}')
+    print(f'Localização: {cidade}, {pais}\n  - Longitude: {lat}\n  - Latitude: {lat}')
+    # Condições Climáticas
+    print(f'\nCondições Climáticas: ')
+    # Obter o tempo(nublado, ceu aberto, etc.)
+    weather = result.get('weather', {})
+    if weather:
+        primeiro_tempo = weather[0]
+        tempo = primeiro_tempo.get('description')
+        print(f'  - Condições Atuais: {tempo.title()}')
+    else:
+        print('  -Informações sobre o tempo não disponíveis')
+    # Temperatura
+    print(f'\nTemperatura:\n  - Temperatura Atual: {temperatura}°C\n  - Sensação Térmica: {sensaçao_termica}°C\n  - Temperatura Mínima: {temperatura_min}°C\n  - Temperatura Máxima: {temperatura_max}°C')
+    # Pressão Atmosférica
+    print(f'\nPressão Atmosférica: {pressao_atmosferica} hPa')
+    # Umidade
+    print(f'Umidade: {umidade}%')
+    # Visiibilidade
+    print(f'Visibilidade: {visibilidade} metros')
+    # Vento
+    print(f'\nVento:\n  - Velocidade: {speed} km/h\n  - Direção: {direcao} graus')
+    # Nuvens
+    print(f'\nCobertura de Nuvens: {nuvens}%')
+    # Fuso horário
+    print(f'Fuso Horário: {fuso_horario_formato_data}')
+    # Informações da cidade
+    print(f'\nInformações da Cidade:\n  - ID da Cidade: {id}\n  - Nome: {cidade}\n  - Código do País: {pais}')
+    
     
