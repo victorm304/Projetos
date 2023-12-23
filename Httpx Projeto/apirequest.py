@@ -9,12 +9,12 @@ locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 # Função para converter Kelvin para Celsius
 def converter_para_celsius(kelvin):
     celsius = kelvin - 273.15
-    return celsius
+    return round(celsius,2)
 
 # Função para converter metros por segundos para quilometros por hora
 def converter_para_quilometro(velocidade_ms):
     km_por_hora = velocidade_ms * 3.6
-    return km_por_hora
+    return round(km_por_hora,2)
 
 if __name__ == '__main__':
     
@@ -60,10 +60,10 @@ if __name__ == '__main__':
 
     # Obter a temperatura, umidade, pressão atmosferica e visibilidade
     main = result.get('main', {})
-    temperatura = int(converter_para_celsius(main['temp']))
-    temperatura_min = int(converter_para_celsius(main['temp_min']))
-    temperatura_max = int(converter_para_celsius(main['temp_max']))
-    sensaçao_termica = int(converter_para_celsius(main['feels_like']))
+    temperatura = converter_para_celsius(main['temp'])
+    temperatura_min = converter_para_celsius(main['temp_min'])
+    temperatura_max = converter_para_celsius(main['temp_max'])
+    sensaçao_termica = converter_para_celsius(main['feels_like'])
     pressao_atmosferica = main['pressure']
     visibilidade = result.get('visibility')
     umidade = main['humidity']
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     
     # Obtem informações sobre o vento
     wind = result.get('wind', {})
-    speed = int(converter_para_quilometro(wind['speed']))
+    speed = converter_para_quilometro(wind['speed'])
     direcao = wind['deg']
     print(f'Vento: {speed} km/h')
     print(f'Direção: {direcao} graus')
