@@ -21,7 +21,7 @@ if __name__ == '__main__':
     while True:
         # Dados que serão utilizados na requisição da API
         city_name = input("Digite o nome da cidade: ")
-        country_code = 'br'
+        country_code = input('Digite o código do país(ex: br, uk, us, cn, kr, etc...): ')
         lang = 'pt_br'
         api_key = '032490db50ef4537bce870ec46b033ad'
         URL = httpx.get(f'https://api.openweathermap.org/data/2.5/weather?q={city_name},{country_code}&lang={lang}&appid={api_key}')
@@ -40,7 +40,6 @@ if __name__ == '__main__':
     id = result.get('id')
     pais = sys['country']
     cidade = result['name']
-    print(f'\nResultados para {cidade}, {pais}:\n')
     
     # Obter a temperatura, umidade, pressão atmosferica e visibilidade
     main = result.get('main', {})
@@ -51,29 +50,20 @@ if __name__ == '__main__':
     pressao_atmosferica = main['pressure']
     visibilidade = result.get('visibility')
     umidade = main['humidity']
-    print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C\nSensação Térmica: {sensaçao_termica}°C')
-    print (f'Pressão Atmosférica: {pressao_atmosferica} hPa')
-    print (f'Umidade: {umidade}%')
-    print (f'Visibilidade: {visibilidade} metros')
-    
-    
+
     # Obtem informações sobre o vento
     wind = result.get('wind', {})
     speed = converter_para_quilometro(wind['speed'])
     direcao = wind['deg']
-    print(f'Vento: {speed} km/h')
-    print(f'Direção: {direcao} graus')
     
     # Obtem informações sobre nuvens
     clouds = result.get('clouds')
     nuvens = clouds['all']
-    print(f'Cobertura de Nuvens: {nuvens}%')
 
     # Obtem latitude e longitude
     coord = result.get('coord', {})
     lat = coord['lat']
     long = coord['lon']
-    print(f'Longitude: {long}\nLatitude: {lat}')
 
    # Obtem o codigo de resposta
     codigo_resposta = result.get('cod')
@@ -87,9 +77,11 @@ if __name__ == '__main__':
     fuso_horario_formato_data = fuso_horario_utc.strftime('%d/%m/%Y %H:%M') 
 
     # Imprimir os resultados
+    print(f'\nResultados para {cidade}, {pais}:\n')
+
     # Localização
     print(f'\n{fuso_horario.title()}')
-    print(f'Localização: {cidade}, {pais}\n  - Longitude: {lat}\n  - Latitude: {lat}')
+    print(f'Localização: {cidade}, {pais}\n  - Longitude: {long}\n  - Latitude: {lat}')
     # Condições Climáticas
     print(f'\nCondições Climáticas: ')
     # Obter o tempo(nublado, ceu aberto, etc.)
@@ -116,5 +108,3 @@ if __name__ == '__main__':
     print(f'Fuso Horário: {fuso_horario_formato_data}')
     # Informações da cidade
     print(f'\nInformações da Cidade:\n  - ID da Cidade: {id}\n  - Nome: {cidade}\n  - Código do País: {pais}')
-    
-    
