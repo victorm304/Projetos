@@ -1,6 +1,9 @@
 import httpx
 import json
-import datetime
+from datetime import datetime
+import locale
+
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
 # Função para converter Kelvin para Celsius
 def converter_para_celsius(kelvin):
@@ -26,10 +29,9 @@ if __name__ == '__main__':
     pais = sys['country']
     cidade = result['name']
     
-
     #Obter informações de data e hora
-    print(result['dt'])
-
+    data_hora = datetime.now()
+    atual = data_hora.strftime('%A, %H:%M')
     
     # Obter o tempo(nublado, ceu aberto, etc.)
     weather = result.get('weather', {})
@@ -49,15 +51,8 @@ if __name__ == '__main__':
     print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C')
     print (f'Umidade: {umidade}%')
     
-
     # Obtem informações sobre o vento
     wind = result.get('wind', {})
     speed = int(converter_para_quilometro(wind['speed']))
     print(f'Vento: {speed} km/h')
-
-
-   
-    
-    
-    
-    
+    print(result)
