@@ -1,6 +1,6 @@
 import httpx
 import json
-from datetime import datetime, timedelta
+from datetime import timezone, datetime, timedelta
 import locale
 
 # Configura o idioma para português do brasil, talvez seja necessário instalar o pacote de idiomas para português do brasil
@@ -95,7 +95,11 @@ if __name__ == '__main__':
     codigo_resposta = result.get('cod')
     
     # Obtem o fuso horário
-
+    deslocamento = result.get('timezone')
+    horario_atual_utc = datetime.now(timezone.utc)
+    deslocamento_tempo = timedelta(seconds=deslocamento)
+    fuso_horario_utc = horario_atual_utc + deslocamento_tempo
+    fuso_horario = fuso_horario_utc.strftime('%A %H:%M')
+    print("Horário Atual em UTC:", fuso_horario)
 
     
-
