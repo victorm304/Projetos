@@ -67,7 +67,7 @@ if __name__ == '__main__':
     pressao_atmosferica = main['pressure']
     visibilidade = result.get('visibility')
     umidade = main['humidity']
-    print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C\nSensação Termica: {sensaçao_termica}°C')
+    print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C\nSensação Térmica: {sensaçao_termica}°C')
     print (f'Pressão Atmosférica: {pressao_atmosferica} hPa')
     print (f'Umidade: {umidade}%')
     print (f'Visibilidade: {visibilidade} metros')
