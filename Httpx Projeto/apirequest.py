@@ -37,9 +37,12 @@ if __name__ == '__main__':
 
     # Obter dados sobre a cidade 
     sys = result.get('sys', {})
+    city_id = result.get('timezone', {})
+    id = result.get('id')
     pais = sys['country']
     cidade = result['name']
     print(f'\nResultados para {cidade}, {pais}:\n')
+    
     
     #Obter informações de data e hora
     data_hora = datetime.now()
@@ -60,10 +63,11 @@ if __name__ == '__main__':
     temperatura = int(converter_para_celsius(main['temp']))
     temperatura_min = int(converter_para_celsius(main['temp_min']))
     temperatura_max = int(converter_para_celsius(main['temp_max']))
+    sensaçao_termica = int(converter_para_celsius(main['feels_like']))
     pressao_atmosferica = main['pressure']
     visibilidade = result.get('visibility')
     umidade = main['humidity']
-    print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C')
+    print(f'Temperatura: {temperatura}°C\nMínima: {temperatura_min}°C\nMáxima: {temperatura_max}°C\nSensação Termica: {sensaçao_termica}°C')
     print (f'Pressão Atmosférica: {pressao_atmosferica} hPa')
     print (f'Umidade: {umidade}%')
     print (f'Visibilidade: {visibilidade} metros')
@@ -72,7 +76,9 @@ if __name__ == '__main__':
     # Obtem informações sobre o vento
     wind = result.get('wind', {})
     speed = int(converter_para_quilometro(wind['speed']))
+    direcao = wind['deg']
     print(f'Vento: {speed} km/h')
+    print(f'Direção: {direcao} graus')
     
     # Obtem informações sobre nuvens
     clouds = result.get('clouds')
@@ -86,7 +92,7 @@ if __name__ == '__main__':
     print(f'Longitude: {long}\nLatitude: {lat}')
 
     # Obtem informações sobre fuso horário
-    
+
 
     
 
