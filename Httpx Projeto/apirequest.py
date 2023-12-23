@@ -34,7 +34,6 @@ if __name__ == '__main__':
             print(URL)
             print('Ocorreu um erro, tente novamente.')
     
-
     # Obter dados sobre a cidade 
     sys = result.get('sys', {})
     city_id = result.get('timezone', {})
@@ -42,12 +41,6 @@ if __name__ == '__main__':
     pais = sys['country']
     cidade = result['name']
     print(f'\nResultados para {cidade}, {pais}:\n')
-    
-    
-    #Obter informações de data e hora
-    data_hora = datetime.now()
-    atual = data_hora.strftime('%A, %H:%M')
-    print(atual.title())
     
     # Obter o tempo(nublado, ceu aberto, etc.)
     weather = result.get('weather', {})
@@ -100,6 +93,6 @@ if __name__ == '__main__':
     deslocamento_tempo = timedelta(seconds=deslocamento)
     fuso_horario_utc = horario_atual_utc + deslocamento_tempo
     fuso_horario = fuso_horario_utc.strftime('%A %H:%M')
-    print("Horário Atual em UTC:", fuso_horario)
+    print(f"Fuso Horário Atual: {fuso_horario.title()} ")
 
     
