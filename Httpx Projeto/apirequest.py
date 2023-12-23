@@ -91,7 +91,10 @@ if __name__ == '__main__':
     long = coord['lon']
     print(f'Longitude: {long}\nLatitude: {lat}')
 
-    # Obtem informações sobre fuso horário
+   # Obtem o codigo de resposta
+    codigo_resposta = result.get('cod')
+    
+    # Obtem o fuso horário
 
 
     
