@@ -8,12 +8,12 @@ locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 # Função para converter Kelvin para Celsius
 def converter_para_celsius(kelvin):
     celsius = kelvin - 273.15
-    return round(celsius,2)
+    return round(celsius, 2)
 
 # Função para converter metros por segundos para quilometros por hora
 def converter_para_quilometro(velocidade_ms):
     km_por_hora = velocidade_ms * 3.6
-    return round(km_por_hora,2)
+    return round(km_por_hora, 2)
 
 if __name__ == '__main__':
     
@@ -30,8 +30,7 @@ if __name__ == '__main__':
             print(URL)
             break
         else:
-            print(URL)
-            print('Ocorreu um erro, tente novamente.')
+            print(f'Ocorreu um erro HTTP: {URL}\nTente novamente.')           
     
     # Obter dados sobre a cidade 
     sys = result.get('sys', {})
@@ -73,7 +72,7 @@ if __name__ == '__main__':
     deslocamento_tempo = timedelta(seconds=deslocamento)
     fuso_horario_utc = horario_atual_utc + deslocamento_tempo
     fuso_horario = fuso_horario_utc.strftime('%A %H:%M')
-    fuso_horario_formato_data = fuso_horario_utc.strftime('%d/%m/%Y %H:%M') 
+    fuso_horario_formato_data = fuso_horario_utc.strftime('%d/%m/%Y %H:%M')
 
     # Imprimir os resultados
     print(f'\nResultados para {cidade}, {pais}:\n')
@@ -105,5 +104,7 @@ if __name__ == '__main__':
     print(f'\nCobertura de Nuvens: {nuvens}%')
     # Fuso horário
     print(f'Fuso Horário: {fuso_horario_formato_data}')
+    # Codigo de Resposta
+    print(f'Codigo de Resposta: {codigo_resposta}')
     # Informações da cidade
     print(f'\nInformações da Cidade:\n  - ID da Cidade: {id}\n  - Nome: {cidade}\n  - Código do País: {pais}')
