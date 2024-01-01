@@ -1,5 +1,5 @@
 # Dados não iniciados
-section .bss 
+section .bss
 
 # Dados iniciados
 .section .data

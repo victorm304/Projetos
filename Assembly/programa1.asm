@@ -25,6 +25,6 @@ _start:					; Aqui está o início do programa.
 
 _end:
 
-	mov	rax,	60		; Chamada de sistema 'sys_exit'
+	mov rax,	60		; Chamada de sistema 'sys_exit'
 	mov	rdi,	0		; Retorno 0 (sucesso)
 	syscall
