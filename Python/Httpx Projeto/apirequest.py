@@ -107,4 +107,4 @@ if __name__ == '__main__':
     # Codigo de Resposta
     print(f'Codigo de Resposta: {codigo_resposta}')
     # Informações da cidade
-    print(f'\nInformações da Cidade:\n  - ID da Cidade: {id}\n  - Nome: {cidade}\n  - Código do País: {pais}')
+    print(f'\nInformações da Cidade:\n  - ID da Cidade: {id}\n  - Nome: {cidade}\n  - Código do País: {pais}\n')
