@@ -1,4 +1,4 @@
-
+# Obtem o número pitagorico
 for a in range(1, 1000+1):
     for b in range(a,1000+1):
         c = ((a**2) + (b**2)) ** 0.5
