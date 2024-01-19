@@ -1,9 +1,9 @@
 # Obtem o número pitagorico
-for a in range(1, 1000+1):
-    for b in range(a,1000+1):
-        c = ((a**2) + (b**2)) ** 0.5
-        produtoabc = (a + b + c)
+for a in range(1, 1000):
+    for b in range(a, 1000):
+        c = ( (a ** 2) + (b ** 2) ) ** (1/2)
+        produtoabc = a + b + c
+        triplo_pitagorico = a * b * c
         if produtoabc == 1000:
-            print(f'\n{a} + {b} + {c} = {produtoabc}')
-            print(f'{a} * {b} * {c} = {a * b * c}')
+            print(f'triploPitagorico({produtoabc}): {triplo_pitagorico}')
             break

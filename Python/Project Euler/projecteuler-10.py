@@ -1,15 +1,15 @@
-def primo(num):
+def is_primo(num):
     if num < 2:
         return False
-    for i in range(2, int(num ** 0.5) + 1):
+    for i in range(2,int(num ** (1/2)) + 1):
         if num % i == 0:
             return False
     return True
 
-numeros_primos = []
+sum_primes = 0
 
-for num in range(1, 2000000+1):
-    if primo(num):
-        numeros_primos.append(num)
+for num in range(1, 2000000):
+    if is_primo(num):
+        sum_primes += num
 
-print(sum(numeros_primos))
+print(f'somaDosPrimos: {sum_primes}')
