@@ -9,7 +9,14 @@ def is_primo(num):
 sum_primes = 0
 
 for num in range(1, 2000000):
+<<<<<<< HEAD
     if is_primo(num):
         sum_primes += num
 
 print(f'somaDosPrimos: {sum_primes}')
+=======
+    if primo(num):
+        sum_primes += num
+
+print(f'somaDosPrimos(2000000): {sum_primes}')
+>>>>>>> a36f005 (.)
