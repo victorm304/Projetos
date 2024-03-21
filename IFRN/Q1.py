@@ -1,5 +1,6 @@
 import os
 import time
+from tqdm import tqdm
 
 # Função para converter uma string em uma lista de valores ASCII correspondente aos caracteres da string
 def ascii(arqOrigem):
@@ -26,18 +27,23 @@ def XOR(arqOrigem, palavra_passe):
 # Função principal do script, responsavel por ler os bytes do arq de origem, chamar as funções auxiliares, e escrever os bytes cifrados no arq de destino.
 def cifrar_arquivo(arquivoOrigem, palavra_passe, nome_arqDestino):
     #Define o tamanho do bloco a ser lido em bytes
-    tam_bytes = 4096
-    with open(arquivoOrigem, "rb") as arq_origem, open(nome_arqDestino, "wb") as arq_destino:
+    tam_bytes = 4096 
+    tamanho_total = os.path.getsize(arquivoOrigem)
 
-        while True:
-            bloco = arq_origem.read(tam_bytes)
-            if not bloco:
+    with open(arquivoOrigem, "rb") as arq_origem, open(nome_arqDestino, "wb") as arq_destino:
+        with tqdm(total=tamanho_total, unit='B', unit_scale=True, desc='Progresso') as pbar:
+            
+            while True:
+                bloco = arq_origem.read(tam_bytes)
+                if not bloco:
                 # Se não houver mais conteúdo para ler, quebra o loop
-                break
+                    break
             
             # Aplica a operação XOR no bloco de bytes atual, e escreve-os no arq de destino
-            bloco_cifrado = XOR(bloco, palavra_passe)
-            arq_destino.write(bytes(bloco_cifrado))
+                bloco_cifrado = XOR(bloco, palavra_passe)
+                arq_destino.write(bytes(bloco_cifrado))
+
+                pbar.update(len(bloco))
 
 if __name__ == "__main__":
     # Solicita ao usuário o arq de origem, arq de destino, e palavra-passe
